@@ -60,7 +60,8 @@ namespace SampleMySQL_DB {
         private void btnSave_Click(object sender, EventArgs e)
         {
             this._command = new MySqlCommand(
-                $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES({this.txtEmployeeID.Text}" +
+                $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES(" +
+                $"{this.txtEmployeeID.Text}" +
                 $", '{this.txtEmployeeName.Text}', {float.Parse(this.txtEmployeeSal.Text)}" +
                 $", '{this.txtEmployeeAddr.Text}', {this.txtEmployeePhone.Text});"
                 , _connection);
