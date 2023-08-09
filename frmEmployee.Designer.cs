@@ -1,5 +1,5 @@
 ﻿namespace SampleMySQL_DB {
-    partial class Form1 {
+    partial class frmEmployee {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -40,14 +40,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.btnEdit = new System.Windows.Forms.CheckBox();
+            this.btnSearch = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(122, 382);
+            this.btnSave.Location = new System.Drawing.Point(643, 54);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 29);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -55,9 +57,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(203, 382);
+            this.btnClear.Location = new System.Drawing.Point(643, 85);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(75, 29);
             this.btnClear.TabIndex = 1;
             this.btnClear.Text = "ล้าง";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -65,35 +67,35 @@
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(113, 57);
+            this.txtEmployeeID.Location = new System.Drawing.Point(122, 57);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(84, 22);
             this.txtEmployeeID.TabIndex = 2;
             // 
             // txtEmployeeName
             // 
-            this.txtEmployeeName.Location = new System.Drawing.Point(113, 91);
+            this.txtEmployeeName.Location = new System.Drawing.Point(122, 91);
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(109, 22);
             this.txtEmployeeName.TabIndex = 3;
             // 
             // txtEmployeeSal
             // 
-            this.txtEmployeeSal.Location = new System.Drawing.Point(324, 94);
+            this.txtEmployeeSal.Location = new System.Drawing.Point(352, 94);
             this.txtEmployeeSal.Name = "txtEmployeeSal";
             this.txtEmployeeSal.Size = new System.Drawing.Size(86, 22);
             this.txtEmployeeSal.TabIndex = 4;
             // 
             // txtEmployeeAddr
             // 
-            this.txtEmployeeAddr.Location = new System.Drawing.Point(113, 127);
+            this.txtEmployeeAddr.Location = new System.Drawing.Point(122, 127);
             this.txtEmployeeAddr.Name = "txtEmployeeAddr";
-            this.txtEmployeeAddr.Size = new System.Drawing.Size(297, 22);
+            this.txtEmployeeAddr.Size = new System.Drawing.Size(316, 22);
             this.txtEmployeeAddr.TabIndex = 5;
             // 
             // txtEmployeePhone
             // 
-            this.txtEmployeePhone.Location = new System.Drawing.Point(113, 161);
+            this.txtEmployeePhone.Location = new System.Drawing.Point(122, 161);
             this.txtEmployeePhone.Name = "txtEmployeePhone";
             this.txtEmployeePhone.Size = new System.Drawing.Size(109, 22);
             this.txtEmployeePhone.TabIndex = 6;
@@ -129,7 +131,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(247, 94);
+            this.label4.Location = new System.Drawing.Point(256, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 10;
@@ -155,19 +157,51 @@
             // 
             // dgvEmployee
             // 
+            this.dgvEmployee.AllowUserToAddRows = false;
+            this.dgvEmployee.AllowUserToDeleteRows = false;
+            this.dgvEmployee.AllowUserToResizeRows = false;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployee.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvEmployee.Location = new System.Drawing.Point(19, 199);
+            this.dgvEmployee.MultiSelect = false;
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
-            this.dgvEmployee.Size = new System.Drawing.Size(699, 177);
+            this.dgvEmployee.Size = new System.Drawing.Size(699, 208);
             this.dgvEmployee.TabIndex = 13;
+            this.dgvEmployee.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_RowEnter);
             // 
-            // Form1
+            // btnEdit
+            // 
+            this.btnEdit.Appearance = System.Windows.Forms.Appearance.Button;
+            this.btnEdit.Location = new System.Drawing.Point(643, 120);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 29);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.CheckedChanged += new System.EventHandler(this.btnEdit_CheckedChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Appearance = System.Windows.Forms.Appearance.Button;
+            this.btnSearch.Location = new System.Drawing.Point(643, 155);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 29);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.Text = "ค้นหา";
+            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 418);
+            this.ClientSize = new System.Drawing.Size(732, 419);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.dgvEmployee);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -182,7 +216,7 @@
             this.Controls.Add(this.txtEmployeeID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
-            this.Name = "Form1";
+            this.Name = "frmEmployee";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
@@ -207,6 +241,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvEmployee;
+        private System.Windows.Forms.CheckBox btnEdit;
+        private System.Windows.Forms.CheckBox btnSearch;
     }
 }
 
