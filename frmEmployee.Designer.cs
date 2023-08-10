@@ -217,7 +217,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Name = "frmEmployee";
-            this.Text = "Form1";
+            this.Text = "Employee";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.ResumeLayout(false);

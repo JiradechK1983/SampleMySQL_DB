@@ -14,7 +14,7 @@ namespace SampleMySQL_DB {
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEmployee());
+            Application.Run(new frmMainMDI());
         }
     }
 }
