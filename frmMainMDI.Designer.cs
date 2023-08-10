@@ -337,6 +337,7 @@
             this.mnuCustomer.Name = "mnuCustomer";
             this.mnuCustomer.Size = new System.Drawing.Size(226, 26);
             this.mnuCustomer.Text = "Customers";
+            this.mnuCustomer.Click += new System.EventHandler(this.mnuCustomer_Click);
             // 
             // toolStripSeparator9
             // 

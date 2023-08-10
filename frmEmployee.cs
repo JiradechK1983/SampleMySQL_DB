@@ -80,6 +80,7 @@ namespace SampleMySQL_DB {
             this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
             this._ds = new DataSet();
 
+            
             _adapter.Fill(_ds, "Employee_tbl");
             dgvEmployee.DataSource = _ds;
             dgvEmployee.DataMember = "Employee_tbl";

@@ -175,7 +175,7 @@
             // btnEdit
             // 
             this.btnEdit.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnEdit.Location = new System.Drawing.Point(643, 120);
+            this.btnEdit.Location = new System.Drawing.Point(643, 117);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 29);
             this.btnEdit.TabIndex = 14;
@@ -187,7 +187,7 @@
             // btnSearch
             // 
             this.btnSearch.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnSearch.Location = new System.Drawing.Point(643, 155);
+            this.btnSearch.Location = new System.Drawing.Point(643, 151);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 29);
             this.btnSearch.TabIndex = 15;

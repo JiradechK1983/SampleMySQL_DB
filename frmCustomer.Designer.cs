@@ -44,13 +44,14 @@
             this.txtCreditLimit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCurrentBal = new System.Windows.Forms.TextBox();
+            this.btnPrintReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
             // 
             this.btnSearch.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnSearch.Location = new System.Drawing.Point(651, 168);
+            this.btnSearch.Location = new System.Drawing.Point(651, 164);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 29);
             this.btnSearch.TabIndex = 31;
@@ -61,7 +62,7 @@
             // btnEdit
             // 
             this.btnEdit.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnEdit.Location = new System.Drawing.Point(651, 133);
+            this.btnEdit.Location = new System.Drawing.Point(651, 130);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 29);
             this.btnEdit.TabIndex = 30;
@@ -209,11 +210,21 @@
             this.txtCurrentBal.Size = new System.Drawing.Size(109, 22);
             this.txtCurrentBal.TabIndex = 34;
             // 
+            // btnPrintReport
+            // 
+            this.btnPrintReport.Location = new System.Drawing.Point(651, 199);
+            this.btnPrintReport.Name = "btnPrintReport";
+            this.btnPrintReport.Size = new System.Drawing.Size(75, 29);
+            this.btnPrintReport.TabIndex = 36;
+            this.btnPrintReport.Text = "พิมพ์รายงาน";
+            this.btnPrintReport.UseVisualStyleBackColor = true;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 552);
+            this.Controls.Add(this.btnPrintReport);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCurrentBal);
             this.Controls.Add(this.label4);
@@ -260,5 +271,6 @@
         private System.Windows.Forms.TextBox txtCreditLimit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCurrentBal;
+        private System.Windows.Forms.Button btnPrintReport;
     }
 }

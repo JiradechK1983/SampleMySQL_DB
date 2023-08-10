@@ -109,5 +109,13 @@ namespace SampleMySQL_DB {
             frmEmployee.MdiParent = this;
             frmEmployee.Show();
         }
+
+        private void mnuCustomer_Click(object sender, EventArgs e)
+        {
+            frmCustomer frmCustomer = new frmCustomer();
+
+            frmCustomer.MdiParent = this;
+            frmCustomer.Show();
+        }
     }
 }
