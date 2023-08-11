@@ -58,6 +58,7 @@
             this.btnSearch.Text = "ค้นหา";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.CheckedChanged += new System.EventHandler(this.btnSearch_CheckedChanged);
             // 
             // btnEdit
             // 
@@ -69,6 +70,7 @@
             this.btnEdit.Text = "แก้ไข";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.CheckedChanged += new System.EventHandler(this.btnEdit_CheckedChanged);
             // 
             // dgvCustomer
             // 
@@ -85,6 +87,7 @@
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.Size = new System.Drawing.Size(699, 282);
             this.dgvCustomer.TabIndex = 29;
+            this.dgvCustomer.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_RowEnter);
             // 
             // label6
             // 
@@ -168,6 +171,7 @@
             this.btnClear.TabIndex = 17;
             this.btnClear.Text = "ล้าง";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSave
             // 
@@ -177,6 +181,7 @@
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label4
             // 
@@ -218,6 +223,7 @@
             this.btnPrintReport.TabIndex = 36;
             this.btnPrintReport.Text = "พิมพ์รายงาน";
             this.btnPrintReport.UseVisualStyleBackColor = true;
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
             // frmCustomer
             // 
@@ -245,6 +251,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "frmCustomer";
             this.Text = "Customer";
+            this.Load += new System.EventHandler(this.frmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
