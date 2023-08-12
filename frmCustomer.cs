@@ -1,15 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Common;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace SampleMySQL_DB {
 
@@ -18,7 +10,7 @@ namespace SampleMySQL_DB {
         private MySqlConnection _connection;
         private MySqlCommand _command;
         private MySqlDataAdapter _adapter;
-        private DataSet _ds;
+        private DataSet _ds = new DataSet();
 
         public frmCustomer()
         {
@@ -65,12 +57,17 @@ namespace SampleMySQL_DB {
             this.txtCurrentBal.DataBindings.Clear();
         }
 
-        private void FetchView()
+        private void FetchView(string CusId, string CusName, string Credit_Lim, string Curr_Bal)
         {
-            this._command = new MySqlCommand("SELECT * FROM customer_tbl");
+            this._command = new MySqlCommand(
+                    $"SELECT * FROM customer_tbl " +
+                    $"WHERE cid LIKE '%{CusId}%' AND cname LIKE '%{CusName}%' " +
+                    $"AND credit_lim LIKE '%{Credit_Lim}%' " +
+                    $"AND curr_bal LIKE '%{Curr_Bal}%';"
+                );
+
             this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
             this._ds = new DataSet();
-
 
             _adapter.Fill(_ds, "customer_tbl");
             dgvCustomer.DataSource = _ds;
@@ -89,7 +86,8 @@ namespace SampleMySQL_DB {
             this._command.ExecuteNonQuery();
             this._connection.Close();
             this.btnClear_Click(null, null);
-            this.FetchView();
+            this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
+                , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
         }
 
         private void dgvCustomer_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -124,11 +122,6 @@ namespace SampleMySQL_DB {
             }
         }
 
-        private void btnSearch_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
 
@@ -141,7 +134,14 @@ namespace SampleMySQL_DB {
                 Application.Exit();
             }
 
-            this.FetchView();
+            this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
+                , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
+                , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
         }
     }
 }

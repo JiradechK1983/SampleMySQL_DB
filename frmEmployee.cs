@@ -17,7 +17,6 @@ namespace SampleMySQL_DB {
         private MySqlDataAdapter _adapter;
         private DataSet _ds;
 
-
         public frmEmployee()
         {
             InitializeComponent();
@@ -43,17 +42,37 @@ namespace SampleMySQL_DB {
             }
         }
 
-        private void Upsert(string Eid, string Ename, string Esalary, string Eaddress, string ETel)
+        private void Upsert(string id, string name, string salary, string address, string phone)
         {
-            this._command = new MySqlCommand(
-                $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES({Eid}" +
-                $", '{Ename}', {float.Parse(Esalary)}" +
-                $", '{Eaddress}', {ETel});"
+            this._command = new MySqlCommand("" + 
+                    "SELECT * FROM employee_tbl WHERE eid = " + id + ""
+                );
+            this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
+
+            this._ds.Clear();
+            int selectData = this._adapter.Fill(this._ds, "employee_tbl");
+
+            if (selectData == 0) {
+                this._command = new MySqlCommand(
+                $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES({id}" +
+                $", '{name}', {float.Parse(salary)}" +
+                $", '{address}', {phone});"
                 , _connection);
+            }
+            else {
+                this._command = new MySqlCommand(
+                $"UPDATE emplpoyee_tbl SET" +
+                $"ename =  '{name}', salary = '{float.Parse(salary)}', " +
+                $"address = '{address}', telephone = '{phone}')" +
+                $"WHERE eid = '{id}';"
+                , _connection);
+            }
 
             this._connection.Open();
             this._command.ExecuteNonQuery();
             this._connection.Close();
+            this.btnClear_Click(null, null);
+            this.FetchView();
         }
 
         private void AddDataBinding()
@@ -94,7 +113,8 @@ namespace SampleMySQL_DB {
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            this.Upsert(this.txtEmployeeID.Text, this.txtEmployeeName.Text, this.txtEmployeeSal.Text
+                , this.txtEmployeeAddr.Text, this.txtEmployeePhone.Text);
             this.btnClear_Click(sender, e);
             this.FetchView();
         }

@@ -26,7 +26,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSearch = new System.Windows.Forms.CheckBox();
             this.btnEdit = new System.Windows.Forms.CheckBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,20 +44,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtCurrentBal = new System.Windows.Forms.TextBox();
             this.btnPrintReport = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnSearch.Location = new System.Drawing.Point(651, 164);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 29);
-            this.btnSearch.TabIndex = 31;
-            this.btnSearch.Text = "ค้นหา";
-            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.CheckedChanged += new System.EventHandler(this.btnSearch_CheckedChanged);
             // 
             // btnEdit
             // 
@@ -225,17 +213,27 @@
             this.btnPrintReport.UseVisualStyleBackColor = true;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(651, 165);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 29);
+            this.btnSearch.TabIndex = 37;
+            this.btnSearch.Text = "ค้นหา";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 552);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnPrintReport);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCurrentBal);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCreditLimit);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.dgvCustomer);
             this.Controls.Add(this.label6);
@@ -259,8 +257,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox btnSearch;
         private System.Windows.Forms.CheckBox btnEdit;
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Label label6;
@@ -279,5 +275,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCurrentBal;
         private System.Windows.Forms.Button btnPrintReport;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
