@@ -22,25 +22,25 @@ namespace SampleMySQL_DB {
             InitializeComponent();
         }
 
-        private bool TestConnection()
-        {
-            this._connection = new MySqlConnection(
-                     "server=localhost; uid=root; database=samplemysql;"
-                ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
+        //private bool TestConnection()
+        //{
+        //    this._connection = new MySqlConnection(
+        //             "server=localhost; uid=root; database=samplemysql;"
+        //        ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
 
-            try
-            {
-                this._connection.Open();
-                this._connection.Close();
-                MessageBox.Show("Connection Successfull");
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Connection unsuccessfull");
-                return false;
-            }
-        }
+        //    try
+        //    {
+        //        this._connection.Open();
+        //        this._connection.Close();
+        //        MessageBox.Show("Connection Successfull");
+        //        return true;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Connection unsuccessfull");
+        //        return false;
+        //    }
+        //}
 
         private void Upsert(string id, string name, string salary, string address, string phone)
         {
@@ -99,10 +99,16 @@ namespace SampleMySQL_DB {
             this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
             this._ds = new DataSet();
 
-            
-            _adapter.Fill(_ds, "Employee_tbl");
-            dgvEmployee.DataSource = _ds;
-            dgvEmployee.DataMember = "Employee_tbl";
+            try
+            {
+                _adapter.Fill(_ds, "Employee_tbl");
+                dgvEmployee.DataSource = _ds;
+                dgvEmployee.DataMember = "Employee_tbl";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SampleMySQL_DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -121,10 +127,10 @@ namespace SampleMySQL_DB {
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!this.TestConnection())
-            {
-                Application.Exit();
-            }
+            //if (!this.TestConnection())
+            //{
+            //    Application.Exit();
+            //}
             
             this.FetchView();
         }

@@ -17,25 +17,25 @@ namespace SampleMySQL_DB {
             InitializeComponent();
         }
 
-        private bool TestConnection()
-        {
-            this._connection = new MySqlConnection(
-                     "server=localhost; uid=root; database=samplemysql;"
-                ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
+        //private bool TestConnection()
+        //{
+        //    this._connection = new MySqlConnection(
+        //             "server=localhost; uid=root; database=samplemysql;"
+        //        ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
 
-            try
-            {
-                this._connection.Open();
-                this._connection.Close();
-                MessageBox.Show("Connection Successfull");
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Connection unsuccessfull");
-                return false;
-            }
-        }
+        //    try
+        //    {
+        //        this._connection.Open();
+        //        this._connection.Close();
+        //        MessageBox.Show("Connection Successfull");
+        //        return true;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Connection unsuccessfull");
+        //        return false;
+        //    }
+        //}
 
         private void AddDataBinding()
         {
@@ -69,9 +69,15 @@ namespace SampleMySQL_DB {
             this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
             this._ds = new DataSet();
 
-            _adapter.Fill(_ds, "customer_tbl");
-            dgvCustomer.DataSource = _ds;
-            dgvCustomer.DataMember = "customer_tbl";
+            try
+            {
+                _adapter.Fill(_ds, "customer_tbl");
+                dgvCustomer.DataSource = _ds;
+                dgvCustomer.DataMember = "customer_tbl";
+            }
+            catch(Exception ex) { 
+                MessageBox.Show(ex.Message, "SampleMySQL_DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Upsert(string CusId, string CusName, string CusAddress, string CusTel
@@ -129,10 +135,10 @@ namespace SampleMySQL_DB {
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            if (!this.TestConnection())
-            {
-                Application.Exit();
-            }
+            //if (!this.TestConnection())
+            //{
+            //    Application.Exit();
+            //}
 
             this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
                 , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
