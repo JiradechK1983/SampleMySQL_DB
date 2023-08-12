@@ -44,35 +44,43 @@ namespace SampleMySQL_DB {
 
         private void Upsert(string id, string name, string salary, string address, string phone)
         {
-            this._command = new MySqlCommand("" + 
+            try
+            {
+                this._command = new MySqlCommand("" +
                     "SELECT * FROM employee_tbl WHERE eid = " + id + ""
                 );
-            this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
+                this._adapter = new MySqlDataAdapter(this._command.CommandText, _connection);
 
-            this._ds.Clear();
-            int selectData = this._adapter.Fill(this._ds, "employee_tbl");
+                this._ds.Clear();
+                int selectData = this._adapter.Fill(this._ds, "employee_tbl");
 
-            if (selectData == 0) {
-                this._command = new MySqlCommand(
-                $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES({id}" +
-                $", '{name}', {float.Parse(salary)}" +
-                $", '{address}', {phone});"
-                , _connection);
+                if (selectData == 0)
+                {
+                    this._command = new MySqlCommand(
+                    $"INSERT INTO employee_tbl(eid, ename, salary, address, telephone) VALUES({id}" +
+                    $", '{name}', {float.Parse(salary)}" +
+                    $", '{address}', {phone});"
+                    , _connection);
+                }
+                else
+                {
+                    this._command = new MySqlCommand(
+                    $"UPDATE emplpoyee_tbl SET" +
+                    $"ename =  '{name}', salary = '{float.Parse(salary)}', " +
+                    $"address = '{address}', telephone = '{phone}')" +
+                    $"WHERE eid = '{id}';"
+                    , _connection);
+                }
+
+                this._connection.Open();
+                this._command.ExecuteNonQuery();
+                this._connection.Close();
+                this.btnClear_Click(null, null);
+                this.FetchView();
             }
-            else {
-                this._command = new MySqlCommand(
-                $"UPDATE emplpoyee_tbl SET" +
-                $"ename =  '{name}', salary = '{float.Parse(salary)}', " +
-                $"address = '{address}', telephone = '{phone}')" +
-                $"WHERE eid = '{id}';"
-                , _connection);
+            catch(Exception ex) {
+                MessageBox.Show(ex.Message, "SampleMySQL_DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this._connection.Open();
-            this._command.ExecuteNonQuery();
-            this._connection.Close();
-            this.btnClear_Click(null, null);
-            this.FetchView();
         }
 
         private void AddDataBinding()

@@ -83,17 +83,24 @@ namespace SampleMySQL_DB {
         private void Upsert(string CusId, string CusName, string CusAddress, string CusTel
             , string CusCredit_Lim, string CusCrr_Bal)
         {
-            this._command = new MySqlCommand(
+            try
+            {
+                this._command = new MySqlCommand(
                 $"CALL spUpsertCustomer('{CusId}', '{CusName}', '{CusAddress}', '{CusTel}'" +
                 $", '{int.Parse(CusCredit_Lim)}', '{int.Parse(CusCrr_Bal)}')"
                 , _connection);
 
-            this._connection.Open();
-            this._command.ExecuteNonQuery();
-            this._connection.Close();
-            this.btnClear_Click(null, null);
-            this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
-                , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
+                this._connection.Open();
+                this._command.ExecuteNonQuery();
+                this._connection.Close();
+                this.btnClear_Click(null, null);
+                this.FetchView(this.txtCustomerID.Text, this.txtCustomerName.Text
+                    , this.txtCreditLimit.Text, this.txtCurrentBal.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SampleMySQL_DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvCustomer_RowEnter(object sender, DataGridViewCellEventArgs e)
