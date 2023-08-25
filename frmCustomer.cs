@@ -17,25 +17,24 @@ namespace SampleMySQL_DB {
             InitializeComponent();
         }
 
-        //private bool TestConnection()
-        //{
-        //    this._connection = new MySqlConnection(
-        //             "server=localhost; uid=root; database=samplemysql;"
-        //        ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
+        private bool TestConnection()
+        {
+            this._connection = new MySqlConnection(
+                     "server=localhost; uid=root; database=samplemysql;"
+                ); //"server=127.0.0.1;uid=root;pwd=12345;database=test"
 
-        //    try
-        //    {
-        //        this._connection.Open();
-        //        this._connection.Close();
-        //        MessageBox.Show("Connection Successfull");
-        //        return true;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        MessageBox.Show("Connection unsuccessfull");
-        //        return false;
-        //    }
-        //}
+            try
+            {
+                this._connection.Open();
+                this._connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Connection unsuccessfull");
+                return false;
+            }
+        }
 
         private void AddDataBinding()
         {
